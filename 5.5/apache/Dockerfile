@@ -49,6 +49,10 @@ RUN set -x \
 	&& sed -i "s/^;date.timezone =$/date.timezone = \"Europe\/Paris\"/" /usr/local/lib/php.ini \
 	&& rm -r /usr/src/php
 
+RUN set -x \
+	&& curl -sS https://getcomposer.org/installer | php \
+	&& mv composer.phar /usr/local/bin/composer
+
 WORKDIR /var/www/html
 
 EXPOSE 80
